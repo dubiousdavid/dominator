@@ -1,10 +1,6 @@
 (ns html-vdom.core
-  (:require [clojure.browser.repl :as repl]
-            [stch.html :as html]
+  (:require [stch.html :as html]
             [html-vdom.attributes :refer [->vdom-props]]))
-
-;; (repl/connect "http://localhost:9000/repl")
-(enable-console-print!)
 
 (def VNode js/VDOM.VNode)
 (def VText js/VDOM.VText)
@@ -34,8 +30,16 @@
 
 (defrecord VDOM [tree root-node])
 
-(defn diff-and-patch [vdom]
-  (let [vdom (atom vdom)]
+(defn patch-dom
+  "Given an a Element elem returns a function that takes
+  a VTree and renders to the DOM at elem."
+  [elem]
+  (let [vdom (atom nil)]
     (fn [new-tree]
-      (let [patches (diff (.-tree @vdom) new-tree)]
-        (swap! vdom assoc :root-node (patch (.-root-node @vdom) patches) :tree new-tree)))))
+      (if-some [curr-vdom @vdom]
+        (let [patches (diff (.-tree curr-vdom) new-tree)
+              new-root (patch (.-root-node curr-vdom) patches)]
+          (swap! vdom assoc :tree new-tree :root-node new-root))
+        (let [root-node (create new-tree)]
+          (.appendChild elem root-node)
+          (reset! vdom (->VDOM new-tree root-node)))))))
