@@ -1,7 +1,6 @@
 (ns dominator.test
   (:require [dominator.core :refer [patch-dom]]
             [stch.html :refer [div table tr td input]]
-            [clojure.browser.repl :as repl]
             [cljs.core.async :as async :refer [<!]]
             [dominator.async :as as :refer-macros [forever]]
             [dominator.test.util :as util]))
