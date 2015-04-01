@@ -1,0 +1,25 @@
+{
+  "name": "dominator",
+  "version": "0.1.0",
+  "description": "Virtual DOM bindings.",
+  "dependencies": {
+    "virtual-dom": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dubiousdavid/dominator"
+  },
+  "keywords": [
+    "virtual-dom"
+  ],
+  "author": "David Sargeant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dubiousdavid/dominator/issues"
+  },
+  "homepage": "https://github.com/dubiousdavid/dominator"
+}

@@ -1,6 +1,6 @@
 (ns dominator.core
   (:require [stch.html :as html]
-            [html-vdom.attributes :refer [attrs->props]]))
+            [dominator.attributes :refer [attrs->props]]))
 
 (def VNode js/VDOM.VNode)
 (def VText js/VDOM.VText)

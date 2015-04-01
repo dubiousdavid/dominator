@@ -1,6 +1,6 @@
 (defproject dominator "0.1.0"
   :description "Virtual DOM bindings for stch-html."
-  :url "https://github.com/stch-library/html-vdom"
+  :url "https://github.com/dubiousdavid/dominator"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-3126"]
                  [stch-library/html "0.1.2"]
@@ -10,21 +10,12 @@
             [lein-npm "0.4.0"]]
   :source-paths ["src" "target/classes"]
   :clean-targets ["out" "out-adv"]
-  :cljsbuild {
-    :builds [{:id "dev"
-              :source-paths ["src" "dev"]
-              :compiler {
-                :main html-vdom.test
-                :output-to "out/html_vdom.js"
-                :output-dir "out"
-                :optimizations :none
-                :cache-analysis true
-                :source-map true}}
-             {:id "release"
-              :source-paths ["src"]
-              :compiler {
-                :main html-vdom.core
-                :output-to "out-adv/html_vdom.min.js"
-                :output-dir "out-adv"
-                :optimizations :advanced
-                :pretty-print false}}]})
+  :cljsbuild
+  {:builds [{:id "dev"
+             :source-paths ["src" "dev"]
+             :compiler {:main dominator.test
+                        :output-to "out/dominator_test.js"
+                        :output-dir "out"
+                        :optimizations :none
+                        :cache-analysis true
+                        :source-map true}}]})

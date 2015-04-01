@@ -1,0 +1,3 @@
+#!/bin/sh
+npm install
+browserify vdom-main.js -o vdom.js
