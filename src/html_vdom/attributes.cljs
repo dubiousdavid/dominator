@@ -14,7 +14,9 @@
    "tabindex" "tabIndex"
    "usemap" "useMap"})
 
-(defn ->vdom-props [attrs]
+(defn attrs->props
+  "Convert a Clojure map of attributes to Javascript properties."
+  [attrs]
   (reduce (fn [acc [k v]]
             (let [key (name k)]
               (aset acc (attr->prop key key) v)

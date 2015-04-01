@@ -1,11 +1,10 @@
 (ns html-vdom.test
-  (:require [html-vdom.core :refer [patch-dom] :refer-macros [defvdom]]
+  (:require [html-vdom.core :refer [patch-dom]]
             [stch.html :refer [div table tr td input]]
             [clojure.browser.repl :as repl]
             [cljs.core.async :as async :refer [<!]]
             [html-vdom.async :as as :refer-macros [forever]]
-            [cljs.reader :as reader])
-  (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
+            [cljs.reader :as reader]))
 
 ;;(repl/connect "http://localhost:9000/repl")
 (enable-console-print!)
@@ -19,7 +18,7 @@
 (def people ["Billy" "Bobby" "Joey"])
 (def updates (async/chan 10))
 
-(defvdom render [model]
+(defn render [model]
   (div
     (table
       (tr
@@ -59,7 +58,6 @@
 (def patch (patch-dom js/document.body))
 
 (forever
-  (let [latest (<! model)]
-    (println latest)
-    (set-storage "clicks" latest)
-    (-> latest render patch)))
+  (let [m (<! model)]
+    (set-storage "clicks" m)
+    (-> m render patch)))

@@ -1,6 +1,6 @@
 (ns html-vdom.async
   (:require [cljs.core.async :as async :refer [<! >!]])
-  (:require-macros [cljs.core.async.macros :refer [go go-loop]])
+  (:require-macros [cljs.core.async.macros :refer [go-loop]])
   (:refer-clojure :exclude [distinct]))
 
 (defn send [source v]
