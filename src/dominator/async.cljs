@@ -1,4 +1,5 @@
-(ns html-vdom.async
+(ns dominator.async
+  "Async functions for implementing the 'Elm pattern'."
   (:require [cljs.core.async :as async :refer [<! >!]])
   (:require-macros [cljs.core.async.macros :refer [go-loop]])
   (:refer-clojure :exclude [distinct]))

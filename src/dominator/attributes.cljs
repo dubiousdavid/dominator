@@ -1,4 +1,4 @@
-(ns html-vdom.attributes)
+(ns dominator.attributes)
 
 (def attr->prop
   {"class" "className"

@@ -1,4 +1,4 @@
-(ns html-vdom.async)
+(ns dominator.async)
 
 (defmacro forever [& body]
   `(cljs.core.async.macros/go

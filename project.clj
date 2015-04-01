@@ -1,4 +1,4 @@
-(defproject html-vdom "0.1.0"
+(defproject dominator "0.1.0"
   :description "Virtual DOM bindings for stch-html."
   :url "https://github.com/stch-library/html-vdom"
   :dependencies [[org.clojure/clojure "1.6.0"]

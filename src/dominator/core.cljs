@@ -1,4 +1,4 @@
-(ns html-vdom.core
+(ns dominator.core
   (:require [stch.html :as html]
             [html-vdom.attributes :refer [attrs->props]]))
 
