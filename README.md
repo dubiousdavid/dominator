@@ -1,36 +1,65 @@
 # Dominator
 
-ClojureScript + core.async + Virtual Dom + 'The Elm Pattern' = Sane Javascript!
+[ClojureScript](https://github.com/clojure/clojurescript) + [core.async](https://github.com/clojure/core.async) + [Virtual Dom](https://github.com/Matt-Esch/virtual-dom) + ["The Elm Pattern"](http://elm-lang.org/) = Sane Javascript!
 
-## Setup
+Uses [stch-html](https://github.com/stch-library/html) for representing HTML in ClojureScript.
 
-First-time Clojurescript developers, add the following to your bash .profile:
+## Example Usage
 
-    export LEIN_FAST_TRAMPOLINE=y
-    alias cljsbuild="lein trampoline cljsbuild $@"
+Clone this repo and run `lein cljsbuild once dev`. Open `test.html` in a browser to play with the example below.
 
-To avoid compiling ClojureScript for each build, AOT Clojurescript locally in your project with the following:
+```clojure
+(ns dominator.test
+  (:require [dominator.core :refer [patch-dom]]
+            [stch.html :refer [div table tr td input]]
+            [cljs.core.async :as async :refer [<!]]
+            [dominator.async :as as :refer-macros [forever]]
+            [dominator.test.util :as util]
+            [cljs.core.match])
+  (:require-macros [cljs.core.match.macros :refer [match]]))
 
-    ./scripts/compile_cljsc
+(def people ["Billy" "Bobby" "Joey"])
+(def updates (async/chan 10))
 
-Subsequent dev builds can use:
+(defn render [model]
+  (div
+    (table
+      (tr
+        (for [person people]
+          (td
+            (input :type "button" :value person
+                   :onclick (as/send updates [:clicked person])))))
+      (tr
+        (for [person people]
+          (td
+            (input :type "text" :readonly true :value (get model person))))))
+    (div :id "button-row"
+      (input :type "button" :value "Reset"
+             :onclick (as/send updates :reset)))))
 
-    lein cljsbuild auto dev
+(def empty-model
+  {"Billy" 0
+   "Bobby" 0
+   "Joey" 0})
 
-To start a Node REPL (requires rlwrap):
+(def initial-model
+  (or (util/get-storage "clicks") empty-model))
 
-    ./scripts/repl
+(defn update-model [model action]
+  (match action
+    :no-op model
+    :reset empty-model
+    [:clicked n] (update-in model [n] inc)))
 
-To get source map support in the Node REPL:
+(async/put! updates :no-op)
 
-    lein npm install
+(def model
+  (as/distinct (as/scan update-model initial-model updates)))
 
-Clean project specific out:
+(def patch (patch-dom js/document.body))
 
-    lein clean
-     
-Optimized builds:
-
-    lein cljsbuild once release     
-
-For more info on Cljs compilation, read [Waitin'](http://swannodette.github.io/2014/12/22/waitin/).
+(forever
+  (let [m (<! model)]
+    (util/set-storage "clicks" m)
+    (-> m render patch)))
+```
