@@ -18,7 +18,6 @@
                         :output-to "out/dominator_test.js"
                         :output-dir "out"
                         :optimizations :none
-                        :cache-analysis true
                         :source-map true}}
             {:id "release"
              :source-paths ["src" "dev"]
