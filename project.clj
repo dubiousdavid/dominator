@@ -4,12 +4,12 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-3178"]
                  [stch-library/html "0.1.2" :exclusions [org.clojure/clojurescript]]
-                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
+                 [org.clojure/core.async "0.1.0-SNAPSHOT"]]
   :node-dependencies [[source-map-support "0.2.8"]]
   :plugins [[lein-cljsbuild "1.0.5"]
             [lein-npm "0.4.0"]]
   :source-paths ["src" "target/classes"]
-  :clean-targets ["out" "out-adv"]
+  :clean-targets ["out" "out-adv" "wiki-out"]
   :profiles {:dev {:dependencies [[org.clojure/core.match "0.2.2"]]}}
   :cljsbuild
   {:builds [{:id "wiki-dev"

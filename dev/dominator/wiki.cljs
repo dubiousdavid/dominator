@@ -5,7 +5,8 @@
             [dominator.async :as as :refer-macros [forever]]
             [dominator.test.util :as util]
             [clojure.string :as string]
-            [cljs.core.match])
+            [cljs.core.match]
+            [dominator.util :refer [animate]])
   (:require-macros [cljs.core.match.macros :refer [match]]
                    [cljs.core.async.macros :refer [go]]))
 
@@ -54,6 +55,9 @@
 
 (def patch (patch-dom js/document.body))
 
-(forever
-  (let [m (<! model)]
-    (-> m view patch)))
+(defn main []
+  (when-let [m (async/poll! model)]
+    (-> m view patch))
+  (animate main))
+
+(animate main)
