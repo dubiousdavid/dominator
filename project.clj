@@ -12,7 +12,14 @@
   :clean-targets ["out" "out-adv"]
   :profiles {:dev {:dependencies [[org.clojure/core.match "0.2.2"]]}}
   :cljsbuild
-  {:builds [{:id "dev"
+  {:builds [{:id "wiki-dev"
+             :source-paths ["src" "dev"]
+             :compiler {:main dominator.wiki
+                        :output-to "wiki-out/main.js"
+                        :output-dir "wiki-out"
+                        :optimizations :none
+                        :source-map true}}
+            {:id "dev"
              :source-paths ["src" "dev"]
              :compiler {:main dominator.test
                         :output-to "out/dominator_test.js"

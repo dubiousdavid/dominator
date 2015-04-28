@@ -12,7 +12,7 @@
 (def people ["Billy" "Bobby" "Joey"])
 (def updates (async/chan 10))
 
-(defn render [model]
+(defn view [model]
   (div
     (table
       (tr
@@ -51,5 +51,5 @@
 
 (forever
   (let [m (<! model)]
-    (util/set-storage "clicks" m)
-    (-> m render patch)))
+    (-> m view patch)
+    (util/set-storage "clicks" m)))
