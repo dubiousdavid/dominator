@@ -13,7 +13,7 @@ Uses [stch-html](https://github.com/stch-library/html) for representing HTML in 
 
 ## Example Usage
 
-Clone this repo and run `lein cljsbuild once dev`. Open `test.html` in a browser to play with the example below.
+Clone this repo and run `lein cljsbuild once test`. Open `test.html` in a browser to play with the example below.
 
 ### Overview
 
