@@ -12,7 +12,8 @@
   :plugins [[lein-cljsbuild "1.0.5"]
             [lein-npm "0.4.0"]]
   :source-paths ["src" "target/classes"]
-  :clean-targets ["examples/out" "examples/out-adv" "examples/wiki-out"]
+  :resource-paths ["externs"]
+  :clean-targets ["wiki" "counter"]
   :profiles {:dev {:dependencies [[org.clojure/core.match "0.2.2"]]}}
   :cljsbuild
   {:builds [{:id "wiki"
