@@ -1,6 +1,6 @@
 # Dominator
 
-[ClojureScript](https://github.com/clojure/clojurescript) + [zelkova](https://github.com/jamesmacaulay/zelkova) + [Virtual Dom](https://github.com/Matt-Esch/virtual-dom) + ["The Elm Pattern"](http://elm-lang.org/) = Sane Javascript!
+[ClojureScript](https://github.com/clojure/clojurescript) + [Zelkova](https://github.com/jamesmacaulay/zelkova) + [Virtual Dom](https://github.com/Matt-Esch/virtual-dom) + ["The Elm Pattern"](http://elm-lang.org/) = Sane Javascript!
 
 Uses [stch-html](https://github.com/stch-library/html) for representing HTML in ClojureScript.
 
