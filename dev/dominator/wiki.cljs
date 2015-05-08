@@ -1,14 +1,16 @@
 (ns dominator.wiki
-  (:require [dominator.core :refer [patch-dom]]
+  (:require [dominator.core :refer [patch-dom render]]
             [stch.html :refer [div input ul li]]
-            [cljs.core.async :as async :refer [<!]]
+            [cljs.core.async :as async :refer [<! >!]]
             [dominator.async :as as :refer-macros [forever]]
             [dominator.test.util :as util]
             [clojure.string :as string]
             [cljs.core.match]
-            [dominator.util :refer [animate]])
-  (:require-macros [cljs.core.match.macros :refer [match]]
-                   [cljs.core.async.macros :refer [go]]))
+            [jamesmacaulay.zelkova.signal :as sig]
+            [jamesmacaulay.zelkova.time :as time])
+  (:require-macros [cljs.core.match.macros :refer [match]]))
+
+(enable-console-print!)
 
 (def wikipedia-endpoint
   "http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=")
@@ -16,16 +18,13 @@
 (defn wikipedia [search]
   (str wikipedia-endpoint search))
 
-(defn target-value [e]
-  (.. e -target -value))
-
-(def query (async/chan 10))
-(def updates (async/chan 10))
+(def query (sig/write-port ""))
+(def actions (sig/write-port :no-op))
 
 (defn view [results]
   (div
     (input :placeholder "Search Wikipedia!"
-           :oninput (fn [e] (async/put! query (-> e target-value string/trim))))
+           :oninput #(async/put! query (-> % util/target-value string/trim)))
     (ul
       (for [result results]
         (li result)))))
@@ -37,27 +36,20 @@
     :no-op model
     [:results results] results))
 
-(async/put! updates :no-op)
-
-(def model
-  (as/distinct (as/scan update-model empty-model updates)))
-
-(def throttled
-  (-> query as/distinct (util/throttle 500)))
+(def queries
+  (->> query
+       sig/drop-repeats
+       (time/debounce 150)
+       (sig/drop-if string/blank?)
+       (sig/map wikipedia)
+       sig/to-chan))
 
 (forever
-  (let [q (<! throttled)]
-    (when-not (string/blank? q)
-      (.log js/console q)
-      (let [uri (wikipedia q)
-            result (<! (util/jsonp uri))]
-        (>! updates [:results (second result)])))))
+  (let [q (<! queries)]
+    (let [result (<! (util/jsonp q))]
+      (>! actions [:results (second result)]))))
 
 (def patch (patch-dom js/document.body))
+(def model (sig/reductions update-model empty-model actions))
 
-(defn main []
-  (when-let [m (async/poll! model)]
-    (-> m view patch))
-  (animate main))
-
-(animate main)
+(render (sig/map view model) patch)

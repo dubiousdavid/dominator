@@ -1,6 +1,7 @@
 (ns dominator.core
   (:require [stch.html :as html]
-            [dominator.attributes :refer [attrs->props]]))
+            [dominator.attributes :refer [attrs->props]]
+            [jamesmacaulay.zelkova.signal :as sig]))
 
 (def VNode js/VDOM.VNode)
 (def VText js/VDOM.VText)
@@ -23,7 +24,9 @@
   default
   (-vtree [this] (new VText (.toString this))))
 
-(defn ->vtree [x]
+(defn ->vtree
+  "Convert markup to a VTree."
+  [x]
   (if (sequential? x)
     (new VNode "div" #js {} (clj->js (map -vtree x)))
     (-vtree x)))
@@ -31,8 +34,8 @@
 (defrecord VDOM [tree root-node])
 
 (defn patch-dom
-  "Given a Javascript element elem returns a function
-  that takes markup and renders to the DOM at elem."
+  "Given a Javascript element elem returns a function that takes markup
+  and renders to the DOM at elem."
   [elem]
   (let [vdom (atom nil)]
     (fn [markup]
@@ -44,3 +47,18 @@
           (let [root-node (create new-tree)]
             (.appendChild elem root-node)
             (reset! vdom (->VDOM new-tree root-node))))))))
+
+(defn animate
+  "Call f on the next animation frame."
+  [f]
+  (.requestAnimationFrame js/window f))
+
+(defn render
+  "Takes a signal of markup and a patch function, and calls patch-fn on
+  the current signal value with each animation frame."
+  [sig patch-fn]
+  (let [a (sig/pipe-to-atom sig)
+        main (fn main []
+                (patch-fn @a)
+                (animate main))]
+    (animate main)))

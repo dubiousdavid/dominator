@@ -4,6 +4,7 @@ pom.xml
 /classes/
 /out/
 /out-adv/
+/wiki-out/
 /target/
 .lein-deps-sum
 .lein-repl-history

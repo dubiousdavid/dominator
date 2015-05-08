@@ -1,7 +1,6 @@
 (ns dominator.test.util
   (:require [cljs.reader :as reader]
-            [cljs.core.async :as async :refer [<! >!]])
-  (:require-macros [cljs.core.async.macros :refer [go-loop]])
+            [cljs.core.async :as async])
   (:import [goog.net Jsonp]
            [goog Uri]))
 
@@ -10,7 +9,6 @@
     (reader/read-string s)))
 
 (defn set-storage [k v]
-
   (.setItem js/localStorage (name k) (.toString v)))
 
 (defn jsonp [uri]
@@ -19,16 +17,8 @@
     (.send req nil (fn [res] (async/put! out res)))
     out))
 
-(defn throttle
-  ([source msecs]
-   (throttle source msecs (async/chan)))
-  ([source msecs out]
-   (let [sliding-source (async/pipe source (async/chan (async/sliding-buffer 1)))]
-     (go-loop []
-       (if-some [val (<! sliding-source)]
-         (do
-           (>! out val)
-           (<! (async/timeout msecs))
-           (recur))
-         (async/close! out))))
-   out))
+(defn target-value [e]
+  (.. e -target -value))
+
+(defn log [v]
+  (.log js/console v))
