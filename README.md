@@ -13,14 +13,14 @@ Uses [stch-html](https://github.com/stch-library/html) for representing HTML in 
 
 ## Example Usage
 
-Clone this repo and run `lein cljsbuild once test`. Open `test.html` in a browser to play with the example below.
+Clone this repo and run `lein cljsbuild once counter`. Open `counter.html` in a browser to play with the example below.
 
 ### Overview
 
 In the example below there is a single signal `actions` that all events are put onto. The `sig/reductions` function acts like an unending `reduce` over the `actions` signal. `reductions` takes a pure function, an initial value, and a signal, and produces a signal. `update-model` takes the existing model, the "action" (value from the signal), and returns a new model. The `view` function is mapped over each value from the `model` signal. This function returns a representation of the markup.  Finally the markup signal and patch function are passed to render, which calls the render function on each value from the signal (uses `requestAnimationFrame` under the hood).
 
 ```clojure
-(ns dominator.test
+(ns dominator.counter
   (:require [dominator.core :refer [patch-dom render]]
             [stch.html :refer [div table tr td input]]
             [cljs.core.async :as async :refer [<!]]
