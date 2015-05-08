@@ -12,28 +12,20 @@
   :plugins [[lein-cljsbuild "1.0.5"]
             [lein-npm "0.4.0"]]
   :source-paths ["src" "target/classes"]
-  :clean-targets ["out" "out-adv" "wiki-out"]
+  :clean-targets ["examples/out" "examples/out-adv" "examples/wiki-out"]
   :profiles {:dev {:dependencies [[org.clojure/core.match "0.2.2"]]}}
   :cljsbuild
-  {:builds [{:id "wiki-dev"
+  {:builds [{:id "wiki"
              :source-paths ["src" "dev"]
              :compiler {:main dominator.wiki
-                        :output-to "wiki-out/main.js"
-                        :output-dir "wiki-out"
+                        :output-to "wiki/wiki.js"
+                        :output-dir "wiki"
                         :optimizations :none
                         :source-map true}}
-            {:id "dev"
+            {:id "test"
              :source-paths ["src" "dev"]
              :compiler {:main dominator.test
-                        :output-to "out/dominator_test.js"
-                        :output-dir "out"
+                        :output-to "test/test.js"
+                        :output-dir "test"
                         :optimizations :none
-                        :source-map true}}
-            {:id "release"
-             :source-paths ["src" "dev"]
-             :compiler {:main dominator.test
-                        :output-to "out-adv/dominator_test.min.js"
-                        :output-dir "out-adv"
-                        :externs ["externs.js"]
-                        :optimizations :advanced
-                        :pretty-print false}}]})
+                        :source-map true}}]})
