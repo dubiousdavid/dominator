@@ -1,4 +1,4 @@
-(ns dominator.test
+(ns dominator.counter
   (:require [dominator.core :refer [patch-dom render]]
             [stch.html :refer [div table tr td input]]
             [cljs.core.async :as async :refer [<!]]

@@ -2,7 +2,7 @@ pom.xml
 *jar
 /lib/
 /classes/
-/test/
+/counter/
 /wiki/
 /target/
 .lein-deps-sum

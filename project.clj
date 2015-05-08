@@ -22,10 +22,10 @@
                         :output-dir "wiki"
                         :optimizations :none
                         :source-map true}}
-            {:id "test"
+            {:id "counter"
              :source-paths ["src" "dev"]
-             :compiler {:main dominator.test
-                        :output-to "test/test.js"
-                        :output-dir "test"
+             :compiler {:main dominator.counter
+                        :output-to "counter/counter.js"
+                        :output-dir "counter"
                         :optimizations :none
                         :source-map true}}]})
