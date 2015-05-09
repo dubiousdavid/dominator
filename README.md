@@ -11,6 +11,20 @@ Uses [stch-html](https://github.com/stch-library/html) for representing HTML in 
 * Use pure functions for updating state and rendering.
 * Minimal learning curve.
 
+## Installation
+
+```clojure
+[dominator "0.1.0"]
+```
+
+Note: You will need to download the compiled `vdom.js` file to your project directory and reference it in your HTML file.
+
+```bash
+wget https://raw.githubusercontent.com/dubiousdavid/dominator/master/vdom.js
+```
+
+You will also need to add `:externs ["dominator.js"]` to the compiler options map if using advanced compilation.
+
 ## Example Usage
 
 Clone this repo and run `lein cljsbuild once counter`. Open `counter.html` in a browser to play with the example below.
