@@ -25,6 +25,10 @@ wget https://raw.githubusercontent.com/dubiousdavid/dominator/master/vdom.js
 
 You will also need to add `:externs ["dominator.js"]` to the compiler options map if using advanced compilation.
 
+## API Documentation
+
+http://dubiousdavid.github.io/dominator/
+
 ## Example Usage
 
 Clone this repo and run `lein cljsbuild once counter`. Open `counter.html` in a browser to play with the example below.
@@ -88,5 +92,4 @@ In the example below there is a single signal `actions` that all events are put 
 (forever
   (let [m (<! modelc)]
     (util/set-storage "clicks" m)))
-
 ```
