@@ -93,3 +93,65 @@ In the example below there is a single signal `actions` that all events are put 
   (let [m (<! modelc)]
     (util/set-storage "clicks" m)))
 ```
+
+## Wikipedia search example
+
+Below is a slightly more complicated example where we have two signals, one for actions and one for queries. You can play with this example by running `lein cljsbuild once wiki` and opening `wiki.html` in a browser.
+
+```clojure
+(ns dominator.wiki
+  (:require [dominator.core :refer [patch-dom render]]
+            [stch.html :refer [div input ul li]]
+            [cljs.core.async :as async :refer [<! >!]]
+            [dominator.async :as as :refer-macros [forever]]
+            [dominator.test.util :as util]
+            [clojure.string :as string]
+            [cljs.core.match]
+            [jamesmacaulay.zelkova.signal :as sig]
+            [jamesmacaulay.zelkova.time :as time])
+  (:require-macros [cljs.core.match.macros :refer [match]]))
+
+(enable-console-print!)
+
+(def wikipedia-endpoint
+  "http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=")
+
+(defn wikipedia [search]
+  (str wikipedia-endpoint search))
+
+(def query (sig/write-port ""))
+(def actions (sig/write-port :no-op))
+
+(defn view [results]
+  (div
+    (input :placeholder "Search Wikipedia!"
+           :oninput #(async/put! query (-> % util/target-value string/trim)))
+    (ul
+      (for [result results]
+        (li result)))))
+
+(def empty-model [])
+
+(defn update-model [model action]
+  (match action
+    :no-op model
+    [:results results] results))
+
+(def queries
+  (->> query
+       sig/drop-repeats
+       (time/debounce 150)
+       (sig/drop-if string/blank?)
+       (sig/map wikipedia)
+       sig/to-chan))
+
+(forever
+  (let [q (<! queries)]
+    (let [result (<! (util/jsonp q))]
+      (>! actions [:results (second result)]))))
+
+(def patch (patch-dom js/document.body))
+(def model (sig/reductions update-model empty-model actions))
+
+(render (sig/map view model) patch)
+```
