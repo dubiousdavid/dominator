@@ -14,12 +14,12 @@
   :source-paths ["src" "target/classes"]
   :resource-paths ["externs"]
   :clean-targets ["wiki" "counter"]
-  :profiles {:dev {:dependencies [[org.clojure/core.match "0.2.2"]]
+  :profiles {:dev {:dependencies [[org.clojure/core.match "0.2.2"]]}
+             :doc {:dependencies [[org.clojure/clojurescript "0.0-2985"]]
                    :codox {:src-dir-uri "https://github.com/dubiousdavid/dominator"
                            :src-linenum-anchor-prefix "L"
                            :output-dir "."
-                           :language :clojurescript
-                           :exclude [dominator.counter dominator.test.util dominator.wiki]}}}
+                           :language :clojurescript}}}
   :cljsbuild
   {:builds [{:id "wiki"
              :source-paths ["src" "dev"]
