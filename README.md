@@ -14,7 +14,7 @@ Uses [stch-html](https://github.com/stch-library/html) for representing HTML in 
 ## Installation
 
 ```clojure
-[dominator "0.1.0"]
+[dominator "0.2.0"]
 ```
 
 Note: You will need to download the compiled `vdom.js` file to your project directory and reference it in your HTML file.
@@ -83,11 +83,10 @@ In the example below there is a single signal `actions` that all events are put 
     :reset empty-model
     [:clicked n] (update-in model [n] inc)))
 
-(def patch (patch-dom js/document.body))
 (def model (sig/reductions update-model initial-model actions))
 (def modelc (sig/to-chan model))
 
-(render (sig/map view model) patch)
+(render (sig/map view model) js/document.body)
 
 (forever
   (let [m (<! modelc)]
@@ -150,8 +149,7 @@ Below is a slightly more complicated example where we have two signals, one for 
     (let [result (<! (util/jsonp q))]
       (>! actions [:results (second result)]))))
 
-(def patch (patch-dom js/document.body))
 (def model (sig/reductions update-model empty-model actions))
 
-(render (sig/map view model) patch)
+(render (sig/map view model) js/document.body)
 ```
