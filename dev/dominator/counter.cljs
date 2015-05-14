@@ -43,11 +43,10 @@
     :reset empty-model
     [:clicked n] (update-in model [n] inc)))
 
-(def patch (patch-dom js/document.body))
 (def model (sig/reductions update-model initial-model actions))
 (def modelc (sig/to-chan model))
 
-(render (sig/map view model) patch)
+(render (sig/map view model) js/document.body)
 
 (forever
   (let [m (<! modelc)]

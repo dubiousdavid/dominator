@@ -49,7 +49,6 @@
     (let [result (<! (util/jsonp q))]
       (>! actions [:results (second result)]))))
 
-(def patch (patch-dom js/document.body))
 (def model (sig/reductions update-model empty-model actions))
 
-(render (sig/map view model) patch)
+(render (sig/map view model) js/document.body)
