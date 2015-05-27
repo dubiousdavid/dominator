@@ -1,4 +1,4 @@
-(defproject dominator "0.2.0"
+(defproject dominator "0.2.1"
   :description "Virtual-Dom in ClojureScript."
   :url "https://github.com/dubiousdavid/dominator"
   :dependencies [[org.clojure/clojure "1.7.0-beta2"]

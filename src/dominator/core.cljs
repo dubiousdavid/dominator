@@ -54,12 +54,11 @@
   (.requestAnimationFrame js/window f))
 
 (defn render
-  "Takes a signal of markup and a Javascript element, and patches the
-  DOM with each animation frame."
+  "Takes a signal of markup and the root Javascript element, and patches the
+  DOM with every signal value. Patching takes place within an animation frame."
   [sig elem]
   (let [a (sig/pipe-to-atom sig)
         patch-fn (patch-dom elem)
-        main (fn main []
-                (patch-fn @a)
-                (animate main))]
-    (animate main)))
+        main #(patch-fn @a)]
+    (animate main)
+    (add-watch a nil #(animate main))))
