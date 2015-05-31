@@ -5,6 +5,7 @@ pom.xml.asc
 /classes/
 /counter/
 /wiki/
+/mario/
 /target/
 .lein-deps-sum
 .lein-repl-history
