@@ -1,0 +1,2 @@
+;; Analyzed by ClojureScript 0.0-3178
+{:name cljs.core.match, :doc nil, :excludes #{}, :use-macros nil, :require-macros nil, :uses nil, :requires nil, :imports nil, :defs {backtrack {:name cljs.core.match/backtrack, :line 3, :column 1, :end-line 3, :end-column 15, :test true, :meta {:line 3, :column 6, :end-line 3, :end-column 15, :file nil}, :file "mario/cljs/core/match.cljs"}}}
