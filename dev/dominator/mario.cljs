@@ -1,26 +1,29 @@
 (ns dominator.mario
-  (:require [dominator.core :refer [render]]
+  (:require [dominator.core :refer [render animation-frames]]
             [stch.html :refer [div img]]
             [jamesmacaulay.zelkova.keyboard :as keyboard]
-            [jamesmacaulay.zelkova.window :as window]
-            [jamesmacaulay.zelkova.signal :as sig]
-            [jamesmacaulay.zelkova.time :as time]
-            [jamesmacaulay.zelkova.impl.time :refer [now]]))
+            [jamesmacaulay.zelkova.signal :as sig]))
 
-(def mario {:x 0 :y 0 :vx 0 :vy 0 :dir :right})
+(enable-console-print!)
+
+(def mario {:x 100 :y 550 :vx 0 :vy 0 :dir :right})
+
+(def jump-velocity 0.6)
+(def walk-velocity 10)
+(def gravity-constant 1000)
 
 (defn jump [{:keys [y]} m]
   (if (and (> y 0) (= (:y m) 0))
-    (assoc m :vy 5)
+    (assoc m :vy jump-velocity)
     m))
 
 (defn gravity [t m]
   (if (> (:y m) 0)
-    (assoc m :vy (- (:vy m) (/ t 4)))
+    (assoc m :vy (- (:vy m) (/ t gravity-constant)))
     m))
 
 (defn physics [t m]
-  (let [new-x (+ (:x m) (* t (:vx m)))
+  (let [new-x (+ (:x m) (* (/ t walk-velocity) (:vx m)))
         new-y (max 0 (+ (:y m) (* t (:vy m))))]
     (assoc m :x new-x :y new-y)))
 
@@ -29,25 +32,27 @@
                             (> x 0) "right"
                             :else (:dir m))))
 
-(defn step [m [dt keys]]
-  (->> (physics dt m)
-       (walk keys)
-       (gravity dt)
-       (jump keys)))
+(defn step [m keys]
+  (let [dt 16.7]
+    (->> (physics dt m)
+         (walk keys)
+         (gravity dt)
+         (jump keys))))
 
-(defn view [[w h] m]
+(defn view [m]
   (let [verb (cond (> (:y m) 0) "jump"
                    (not= (:vx m) 0) "walk"
                    :else "stand")
-        src (str "images/mario/" verb "/" (name (:dir m)) ".gif")
-        left (:x mario)
-        top (- (- h 130) (:y mario))
+        direction (name (:dir m))
+        src (str "images/mario/" verb "/" direction ".gif")
+        left (:x m)
+        top (- 508 (:y m))
         style (str "left: " left "px; top: " top "px;")]
     (div :id "world"
          (img :id "mario" :src src :style style)
          (div :id "ground"))))
 
-(def input (sig/map vector (time/fps 60) keyboard/arrows))
+(def input (sig/sample-on (animation-frames) keyboard/arrows))
 (def model (sig/reductions step mario input))
 
-(render (sig/map view window/dimensions model) js/document.body)
+(render (sig/map view model) js/document.body)

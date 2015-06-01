@@ -19,7 +19,9 @@
   [attrs]
   (reduce (fn [acc [k v]]
             (let [key (name k)]
-              (aset acc (attr->prop key key) v)
+              (if (= key "style")
+                (aset acc "attributes" #js {"style" v})
+                (aset acc (attr->prop key key) v))
               acc))
           (js-obj)
           attrs))
