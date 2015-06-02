@@ -1,7 +1,8 @@
 (ns dominator.core
   (:require [stch.html :as html]
             [dominator.attributes :refer [attrs->props]]
-            [jamesmacaulay.zelkova.signal :as sig]))
+            [jamesmacaulay.zelkova.signal :as sig]
+            [cljs.core.async :as async]))
 
 (def VNode js/VDOM.VNode)
 (def VText js/VDOM.VText)
@@ -53,13 +54,24 @@
   [f]
   (.requestAnimationFrame js/window f))
 
+(defn now []
+  (if (= (goog/typeOf js/performance) "undefined")
+    (.now js/Date)
+    (.now js/performance)))
+
+(defn animation-frames []
+  (let [signal (sig/write-port (now))]
+    (animate (fn tick [t]
+               (async/put! signal t)
+               (animate tick)))
+    signal))
+
 (defn render
   "Takes a signal of markup and a Javascript element, and patches the
   DOM with each animation frame."
   [sig elem]
   (let [a (sig/pipe-to-atom sig)
-        patch-fn (patch-dom elem)
-        main (fn main []
+        patch-fn (patch-dom elem)]
+    (animate (fn tick []
                 (patch-fn @a)
-                (animate main))]
-    (animate main)))
+                (animate tick)))))
