@@ -25,9 +25,15 @@ wget https://raw.githubusercontent.com/dubiousdavid/dominator/master/vdom.js
 
 You will also need to add `:externs ["dominator.js"]` to the compiler options map if using advanced compilation.
 
+## Sample programs
+
+[Counter](http://dubiousdavid.github.io/dominator/counter/)
+[Wikipedia](http://dubiousdavid.github.io/dominator/wiki/)
+[Mario](http://dubiousdavid.github.io/dominator/mario/)
+
 ## API Documentation
 
-http://dubiousdavid.github.io/dominator/
+http://dubiousdavid.github.io/dominator/doc/
 
 ## Example Usage
 

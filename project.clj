@@ -18,7 +18,6 @@
              :doc {:dependencies [[org.clojure/clojurescript "0.0-2985"]]
                    :codox {:src-dir-uri "https://github.com/dubiousdavid/dominator/blob/master/"
                            :src-linenum-anchor-prefix "L"
-                           :output-dir "."
                            :language :clojurescript}}}
   :cljsbuild
   {:builds [{:id "mario"
