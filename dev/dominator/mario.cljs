@@ -83,6 +83,6 @@
          (div :id "ground"))))
 
 (def input (sig/sample-on (animation-frames) keyboard/arrows))
-(def model (sig/reductions step game-state input))
+(def model (sig/drop-repeats (sig/reductions step game-state input)))
 
 (render (sig/map view model) js/document.body)
