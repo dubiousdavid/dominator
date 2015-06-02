@@ -11,10 +11,10 @@
 (def gravity 0.2) ; px / frame^2
 (def jump-coefficient 1.0)
 (def min-jump-height 3) ; px / frame
-(def max-move-speed 3.0) ; px / frame
-(def ground-accel 0.06) ; px / frame^2
-(def air-accel 0.04) ; px / frame^2
-(def ground-friction 0.1) ; px / frame^2
+(def max-move-speed 5.0) ; px / frame
+(def ground-accel 0.03) ; px / frame^2
+(def air-accel 0.02) ; px / frame^2
+(def ground-friction 0.08) ; px / frame^2
 (def air-friction 0.02) ; px / frame^2
 
 (defn mario-sprite-url [activity dir]
@@ -44,7 +44,7 @@
 
 (defn apply-friction [s]
   (cond (= (:dx s) 0) s
-        (<= (:dx s) (friction s)) (assoc s :dx 0)
+        (<= (js/Math.abs (:dx s)) (friction s)) (assoc s :dx 0)
         (> (:dx s) 0) (assoc s :dx (- (:dx s) (friction s)))
         (< (:dx s) 0) (assoc s :dx (+ (:dx s) (friction s)))))
 
