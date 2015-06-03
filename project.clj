@@ -13,31 +13,7 @@
             [lein-npm "0.4.0"]]
   :source-paths ["src" "target/classes"]
   :resource-paths ["externs"]
-  :clean-targets ["wiki" "counter" "mario"]
-  :profiles {:dev {:dependencies [[org.clojure/core.match "0.2.2"]]}
-             :doc {:dependencies [[org.clojure/clojurescript "0.0-2985"]]
+  :profiles {:doc {:dependencies [[org.clojure/clojurescript "0.0-2985"]]
                    :codox {:src-dir-uri "https://github.com/dubiousdavid/dominator/blob/master/"
                            :src-linenum-anchor-prefix "L"
-                           :language :clojurescript}}}
-  :cljsbuild
-  {:builds [{:id "mario"
-             :source-paths ["src" "dev"]
-             :compiler {:main dominator.mario
-                        :output-to "mario/mario.js"
-                        :output-dir "mario"
-                        :optimizations :none
-                        :source-map true}}
-            {:id "wiki"
-             :source-paths ["src" "dev"]
-             :compiler {:main dominator.wiki
-                        :output-to "wiki/wiki.js"
-                        :output-dir "wiki"
-                        :optimizations :none
-                        :source-map true}}
-            {:id "counter"
-             :source-paths ["src" "dev"]
-             :compiler {:main dominator.counter
-                        :output-to "counter/counter.js"
-                        :output-dir "counter"
-                        :optimizations :none
-                        :source-map true}}]})
+                           :language :clojurescript}}})
