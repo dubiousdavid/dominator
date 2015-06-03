@@ -12,3 +12,8 @@ pom.xml.asc
 .lein-plugins/
 /node_modules
 .nrepl-port
+/examples/counter/target/
+/examples/wiki/target/
+/examples/mario/target/
+*un~
+*.swp
