@@ -1,4 +1,4 @@
-(ns dominator.mario
+(ns mario.core
   (:require [dominator.core :refer [render animation-frames]]
             [stch.html :refer [div img]]
             [jamesmacaulay.zelkova.keyboard :as keyboard]
@@ -86,3 +86,4 @@
 (def model (sig/drop-repeats (sig/reductions step game-state input)))
 
 (render (sig/map view model) js/document.body)
+

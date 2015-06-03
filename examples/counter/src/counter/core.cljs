@@ -1,11 +1,11 @@
-(ns dominator.counter
+(ns counter.core
   (:require [dominator.core :refer [patch-dom render]]
             [stch.html :refer [div table tr td input]]
             [cljs.core.async :as async :refer [<!]]
             [dominator.async :as as :refer-macros [forever]]
-            [dominator.test.util :as util]
             [jamesmacaulay.zelkova.signal :as sig]
-            [cljs.core.match])
+            [cljs.core.match]
+            [counter.util :as util])
   (:require-macros [cljs.core.match.macros :refer [match]]))
 
 (enable-console-print!)
@@ -51,3 +51,4 @@
 (forever
   (let [m (<! modelc)]
     (util/set-storage "clicks" m)))
+

@@ -1,4 +1,4 @@
-(ns dominator.test.util
+(ns wiki.util
   (:require [cljs.reader :as reader]
             [cljs.core.async :as async])
   (:import [goog.net Jsonp]
@@ -22,3 +22,5 @@
 
 (defn log [v]
   (.log js/console v))
+
+

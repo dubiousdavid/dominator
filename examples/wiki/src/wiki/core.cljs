@@ -1,9 +1,9 @@
-(ns dominator.wiki
+(ns wiki.core
   (:require [dominator.core :refer [patch-dom render]]
             [stch.html :refer [div input ul li]]
             [cljs.core.async :as async :refer [<! >!]]
             [dominator.async :as as :refer-macros [forever]]
-            [dominator.test.util :as util]
+            [wiki.util :as util]
             [clojure.string :as string]
             [cljs.core.match]
             [jamesmacaulay.zelkova.signal :as sig]
@@ -52,3 +52,4 @@
 (def model (sig/reductions update-model empty-model actions))
 
 (render (sig/map view model) js/document.body)
+
