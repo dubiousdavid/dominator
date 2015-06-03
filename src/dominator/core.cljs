@@ -54,14 +54,16 @@
   [f]
   (.requestAnimationFrame js/window f))
 
-(defn now []
+(defn now
   "Returns the current timestamp."
+  []
   (if (= (goog/typeOf js/performance) "undefined")
     (.now js/Date)
     (.now js/performance)))
 
-(defn animation-frames []
+(defn animation-frames
   "Returns a signal of animation frames."
+  []
   (let [signal (sig/write-port (now))]
     (animate (fn tick [t]
                (async/put! signal t)
