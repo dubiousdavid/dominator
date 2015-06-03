@@ -14,7 +14,7 @@ Uses [stch-html](https://github.com/stch-library/html) for representing HTML in 
 ## Installation
 
 ```clojure
-[dominator "0.2.0"]
+[dominator "0.3.0"]
 ```
 
 Note: You will need to download the compiled `vdom.js` file to your project directory and reference it in your HTML file.
