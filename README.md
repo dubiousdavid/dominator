@@ -27,9 +27,9 @@ You will also need to add `:externs ["dominator.js"]` to the compiler options ma
 
 ## Sample programs
 
-1. [Counter](http://dubiousdavid.github.io/dominator/examples/counter/)
-2. [Wikipedia](http://dubiousdavid.github.io/dominator/examples/wiki/)
-3. [Mario](http://dubiousdavid.github.io/dominator/examples/mario/)
+1. [Counter](http://dubiousdavid.github.io/dominator/examples/counter/) ([source](https://github.com/dubiousdavid/dominator/blob/master/examples/counter/src/counter/core.cljs))
+2. [Wikipedia](http://dubiousdavid.github.io/dominator/examples/wiki/) ([source](https://github.com/dubiousdavid/dominator/blob/master/examples/wiki/src/wiki/core.cljs))
+3. [Mario](http://dubiousdavid.github.io/dominator/examples/mario/) ([source](https://github.com/dubiousdavid/dominator/blob/master/examples/mario/src/mario/core.cljs))
 
 ## API Documentation
 
