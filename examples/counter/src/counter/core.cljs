@@ -1,5 +1,5 @@
 (ns counter.core
-  (:require [dominator.core :refer [patch-dom render]]
+  (:require [dominator.core :refer [render]]
             [stch.html :refer [div table tr td input]]
             [cljs.core.async :as async :refer [<!]]
             [dominator.async :as as :refer-macros [forever]]

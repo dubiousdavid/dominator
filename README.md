@@ -14,7 +14,7 @@ Uses [stch-html](https://github.com/stch-library/html) for representing HTML in 
 ## Installation
 
 ```clojure
-[dominator "0.2.0"]
+[com.2tothe8th/dominator "0.3.0"]
 ```
 
 Note: You will need to download the compiled `vdom.js` file to your project directory and reference it in your HTML file.
@@ -27,9 +27,9 @@ You will also need to add `:externs ["dominator.js"]` to the compiler options ma
 
 ## Sample programs
 
-1. [Counter](http://dubiousdavid.github.io/dominator/examples/counter/)
-2. [Wikipedia](http://dubiousdavid.github.io/dominator/examples/wiki/)
-3. [Mario](http://dubiousdavid.github.io/dominator/examples/mario/)
+1. [Counter](http://dubiousdavid.github.io/dominator/examples/counter/) ([source](https://github.com/dubiousdavid/dominator/blob/master/examples/counter/src/counter/core.cljs))
+2. [Wikipedia](http://dubiousdavid.github.io/dominator/examples/wiki/) ([source](https://github.com/dubiousdavid/dominator/blob/master/examples/wiki/src/wiki/core.cljs))
+3. [Mario](http://dubiousdavid.github.io/dominator/examples/mario/) ([source](https://github.com/dubiousdavid/dominator/blob/master/examples/mario/src/mario/core.cljs))
 
 ## API Documentation
 
@@ -37,15 +37,13 @@ http://dubiousdavid.github.io/dominator/doc/
 
 ## Example Usage
 
-Clone this repo and run `lein cljsbuild once counter`. Open `counter.html` in a browser to play with the example below.
-
 ### Overview
 
 In the example below there is a single signal `actions` that all events are put onto. The `sig/reductions` function acts like an unending `reduce` over the `actions` signal. `reductions` takes a pure function, an initial value, and a signal, and produces a signal. `update-model` takes the existing model, the "action" (value from the signal), and returns a new model. The `view` function is mapped over each value from the `model` signal. This function returns a representation of the markup.  Finally the markup signal and patch function are passed to render, which calls the render function on each value from the signal (uses `requestAnimationFrame` under the hood).
 
 ```clojure
 (ns dominator.counter
-  (:require [dominator.core :refer [patch-dom render]]
+  (:require [dominator.core :refer [render]]
             [stch.html :refer [div table tr td input]]
             [cljs.core.async :as async :refer [<!]]
             [dominator.async :as as :refer-macros [forever]]
@@ -101,11 +99,11 @@ In the example below there is a single signal `actions` that all events are put 
 
 ## Wikipedia search example
 
-Below is a slightly more complicated example where we have two signals, one for actions and one for queries. You can play with this example by running `lein cljsbuild once wiki` and opening `wiki.html` in a browser.
+Below is a slightly more complicated example where we have two signals, one for actions and one for queries.
 
 ```clojure
 (ns dominator.wiki
-  (:require [dominator.core :refer [patch-dom render]]
+  (:require [dominator.core :refer [render]]
             [stch.html :refer [div input ul li]]
             [cljs.core.async :as async :refer [<! >!]]
             [dominator.async :as as :refer-macros [forever]]

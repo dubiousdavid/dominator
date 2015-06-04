@@ -1,5 +1,5 @@
 (ns wiki.core
-  (:require [dominator.core :refer [patch-dom render]]
+  (:require [dominator.core :refer [render]]
             [stch.html :refer [div input ul li]]
             [cljs.core.async :as async :refer [<! >!]]
             [dominator.async :as as :refer-macros [forever]]
