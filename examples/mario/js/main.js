@@ -9086,77 +9086,77 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (4 === l) {
-              var C = c[10], ae = c[2], Gm = null == ae;
+              var C = c[10], ae = c[2], Hm = null == ae;
               c[10] = ae;
               m = c;
-              m[1] = w(Gm) ? 5 : 6;
+              m[1] = w(Hm) ? 5 : 6;
               return Z;
             }
             if (15 === l) {
-              var Ya = c[13], Xa = c[14], Oa = c[15], Ka = c[17], vg = c[2], Wm = Ka, Xm = Oa, Ym = Xa;
+              var Ya = c[13], Xa = c[14], Oa = c[15], Ka = c[17], vg = c[2], Xm = Ka, Ym = Oa, Zm = Xa;
               c[13] = Ya + 1;
               c[18] = vg;
-              c[14] = Ym;
-              c[15] = Xm;
-              c[17] = Wm;
+              c[14] = Zm;
+              c[15] = Ym;
+              c[17] = Xm;
               var tk = m = c;
               tk[2] = null;
               tk[1] = 8;
               return Z;
             }
             if (21 === l) {
-              var Zm = c[2], uk = m = c;
-              uk[2] = Zm;
+              var $m = c[2], uk = m = c;
+              uk[2] = $m;
               uk[1] = 18;
               return Z;
             }
             if (31 === l) {
-              var y = c[9], $m = k(null), an = e.Zb(null, y);
-              c[19] = $m;
+              var y = c[9], an = k(null), bn = e.Zb(null, y);
+              c[19] = an;
               var vk = m = c;
-              vk[2] = an;
+              vk[2] = bn;
               vk[1] = 32;
               return Z;
             }
             if (32 === l) {
-              var Qc = c[20], na = c[11], oa = c[12], Rc = c[21], bn = c[2], cn = Rc, dn = na, en = oa + 1;
+              var Qc = c[20], na = c[11], oa = c[12], Rc = c[21], cn = c[2], dn = Rc, en = na, fn = oa + 1;
               c[20] = Qc;
-              c[11] = dn;
-              c[12] = en;
-              c[22] = bn;
-              c[21] = cn;
+              c[11] = en;
+              c[12] = fn;
+              c[22] = cn;
+              c[21] = dn;
               var wk = m = c;
               wk[2] = null;
               wk[1] = 25;
               return Z;
             }
             if (40 === l) {
-              var xk = c[23], fn = k(null), gn = e.Zb(null, xk);
-              c[24] = fn;
+              var xk = c[23], gn = k(null), hn = e.Zb(null, xk);
+              c[24] = gn;
               var yk = m = c;
-              yk[2] = gn;
+              yk[2] = hn;
               yk[1] = 41;
               return Z;
             }
             if (33 === l) {
-              var Sc = c[25], hn = Rd(Sc), m = c;
-              m[1] = hn ? 36 : 37;
+              var Sc = c[25], jn = Rd(Sc), m = c;
+              m[1] = jn ? 36 : 37;
               return Z;
             }
             if (13 === l) {
-              var oi = c[26], jn = wj(oi), zk = m = c;
-              zk[2] = jn;
+              var oi = c[26], kn = wj(oi), zk = m = c;
+              zk[2] = kn;
               zk[1] = 15;
               return Z;
             }
             if (22 === l) {
-              var t = c[8], kn = wj(t), Ak = m = c;
-              Ak[2] = kn;
+              var t = c[8], ln = wj(t), Ak = m = c;
+              Ak[2] = ln;
               Ak[1] = 24;
               return Z;
             }
             if (36 === l) {
-              var Sc = c[25], Bk = rc(Sc), ln = sc(Sc), mn = L(Bk), Rc = ln, na = Bk, Qc = mn, oa = 0;
+              var Sc = c[25], Bk = rc(Sc), mn = sc(Sc), nn = L(Bk), Rc = mn, na = Bk, Qc = nn, oa = 0;
               c[20] = Qc;
               c[11] = na;
               c[12] = oa;
@@ -9167,9 +9167,9 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (41 === l) {
-              var Sc = c[25], nn = c[2], Rc = H(Sc), na = null, oa = Qc = 0;
+              var Sc = c[25], on = c[2], Rc = H(Sc), na = null, oa = Qc = 0;
               c[20] = Qc;
-              c[27] = nn;
+              c[27] = on;
               c[11] = na;
               c[12] = oa;
               c[21] = Rc;
@@ -9185,8 +9185,8 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (29 === l) {
-              var on = c[2], Fk = m = c;
-              Fk[2] = on;
+              var pn = c[2], Fk = m = c;
+              Fk[2] = pn;
               Fk[1] = 26;
               return Z;
             }
@@ -9198,12 +9198,12 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (6 === l) {
-              var Hk = c[29], pn = I.b ? I.b(d) : I.call(null, d), pi = qg(pn), Ik = L(pi), qn = nf.a ? nf.a(h, Ik) : nf.call(null, h, Ik), Rc = D(pi), na = null, oa = Qc = 0;
+              var Hk = c[29], qn = I.b ? I.b(d) : I.call(null, d), pi = qg(qn), Ik = L(pi), rn = nf.a ? nf.a(h, Ik) : nf.call(null, h, Ik), Rc = D(pi), na = null, oa = Qc = 0;
               c[29] = pi;
               c[20] = Qc;
               c[11] = na;
               c[12] = oa;
-              c[30] = qn;
+              c[30] = rn;
               c[21] = Rc;
               var Jk = m = c;
               Jk[2] = null;
@@ -9218,8 +9218,8 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (25 === l) {
-              var Qc = c[20], oa = c[12], rn = oa < Qc, m = c;
-              m[1] = w(rn) ? 27 : 28;
+              var Qc = c[20], oa = c[12], sn = oa < Qc, m = c;
+              m[1] = w(sn) ? 27 : 28;
               return Z;
             }
             if (34 === l) {
@@ -9235,12 +9235,12 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (3 === l) {
-              var sn = c[2], m = c;
-              return ek(m, sn);
+              var tn = c[2], m = c;
+              return ek(m, tn);
             }
             if (12 === l) {
-              var tn = c[2], Nk = m = c;
-              Nk[2] = tn;
+              var un = c[2], Nk = m = c;
+              Nk[2] = un;
               Nk[1] = 9;
               return Z;
             }
@@ -9254,13 +9254,13 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (35 === l) {
-              var un = c[2], Pk = m = c;
-              Pk[2] = un;
+              var vn = c[2], Pk = m = c;
+              Pk[2] = vn;
               Pk[1] = 29;
               return Z;
             }
             if (19 === l) {
-              var q = c[7], Qk = rc(q), vn = sc(q), wn = L(Qk), Ka = vn, Oa = Qk, Xa = wn, Ya = 0;
+              var q = c[7], Qk = rc(q), wn = sc(q), xn = L(Qk), Ka = wn, Oa = Qk, Xa = xn, Ya = 0;
               c[13] = Ya;
               c[14] = Xa;
               c[15] = Oa;
@@ -9278,13 +9278,13 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (9 === l) {
-              var xn = c[2], Tk = m = c;
-              Tk[2] = xn;
+              var yn = c[2], Tk = m = c;
+              Tk[2] = yn;
               Tk[1] = 7;
               return Z;
             }
             if (5 === l) {
-              var yn = I.b ? I.b(d) : I.call(null, d), Ka = D(yn), Oa = null, Ya = Xa = 0;
+              var zn = I.b ? I.b(d) : I.call(null, d), Ka = D(zn), Oa = null, Ya = Xa = 0;
               c[13] = Ya;
               c[14] = Xa;
               c[15] = Oa;
@@ -9301,26 +9301,26 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (45 === l) {
-              var zn = c[2], Wk = m = c;
-              Wk[2] = zn;
+              var An = c[2], Wk = m = c;
+              Wk[2] = An;
               Wk[1] = 44;
               return Z;
             }
             if (26 === l) {
-              var Hk = c[29], An = c[2], Bn = D(Hk);
-              c[31] = An;
+              var Hk = c[29], Bn = c[2], Cn = D(Hk);
+              c[31] = Bn;
               m = c;
-              m[1] = Bn ? 42 : 43;
+              m[1] = Cn ? 42 : 43;
               return Z;
             }
             if (16 === l) {
-              var q = c[7], Cn = Rd(q), m = c;
-              m[1] = Cn ? 19 : 20;
+              var q = c[7], Dn = Rd(q), m = c;
+              m[1] = Dn ? 19 : 20;
               return Z;
             }
             if (38 === l) {
-              var Dn = c[2], Xk = m = c;
-              Xk[2] = Dn;
+              var En = c[2], Xk = m = c;
+              Xk[2] = En;
               Xk[1] = 35;
               return Z;
             }
@@ -9331,15 +9331,15 @@ var rk = {}, sk = function sk(b, c, d) {
               return Z;
             }
             if (10 === l) {
-              var Ya = c[13], Oa = c[15], Zk = B.a(Oa, Ya), oi = M(Zk, 0), En = M(Zk, 1);
+              var Ya = c[13], Oa = c[15], Zk = B.a(Oa, Ya), oi = M(Zk, 0), Fn = M(Zk, 1);
               c[26] = oi;
               m = c;
-              m[1] = w(En) ? 13 : 14;
+              m[1] = w(Fn) ? 13 : 14;
               return Z;
             }
             if (18 === l) {
-              var Fn = c[2], $k = m = c;
-              $k[2] = Fn;
+              var Gn = c[2], $k = m = c;
+              $k[2] = Gn;
               $k[1] = 12;
               return Z;
             }
@@ -9347,15 +9347,15 @@ var rk = {}, sk = function sk(b, c, d) {
               return m = c, ck(m, 45, f);
             }
             if (37 === l) {
-              var C = c[10], xk = c[23], Sc = c[25], al = G(Sc), Gn = ok(al, C, k);
+              var C = c[10], xk = c[23], Sc = c[25], al = G(Sc), Hn = ok(al, C, k);
               c[23] = al;
               m = c;
-              m[1] = w(Gn) ? 39 : 40;
+              m[1] = w(Hn) ? 39 : 40;
               return Z;
             }
             if (8 === l) {
-              var Ya = c[13], Xa = c[14], Hn = Ya < Xa, m = c;
-              m[1] = w(Hn) ? 10 : 11;
+              var Ya = c[13], Xa = c[14], In = Ya < Xa, m = c;
+              m[1] = w(In) ? 10 : 11;
               return Z;
             }
             return null;
@@ -10839,7 +10839,7 @@ function Fm(a) {
   }
   return b;
 }
-var Hm = aa.document, Im = Hm && zm ? Cm() || ("CSS1Compat" == Hm.compatMode ? parseInt(Dm, 10) : 5) : void 0;
+var Gm = aa.document, Im = Gm && zm ? Cm() || ("CSS1Compat" == Gm.compatMode ? parseInt(Dm, 10) : 5) : void 0;
 var Jm = !zm || zm && 9 <= Im;
 !Am && !zm || zm && zm && 9 <= Im || Am && Fm("1.9.1");
 zm && Fm("9");
@@ -11109,7 +11109,7 @@ function Vm(a) {
     return b;
   }();
 }
-var In = Vm("div"), Jn = Vm("img");
+var Wm = Vm("div"), Jn = Vm("img");
 var Kn = VDOM.VNode, Ln = VDOM.VText, Mn = VDOM.create, Nn = VDOM.patch, On = VDOM.diff, Pn = function Pn(b) {
   if (b ? b.$c : b) {
     return b.$c();
@@ -11602,32 +11602,34 @@ var Va = function() {
   };
   a.k = b;
   return a;
-}(), Fo = new ab(null, 5, [gj, 100, fi, 550, wi, 0, Gi, 0, xi, "right"], null);
-function Go(a) {
+}(), Fo;
+Fo = !Wc.a(navigator.userAgent.indexOf("Firefox"), -1);
+var Go = new ab(null, 5, [gj, 100, fi, 550, wi, 0, Gi, 0, xi, "right"], null), Ho = w(Fo) ? 510 : 508;
+function Io(a) {
   if (!Wc.a(wi.b(a), 0)) {
     var b = wi.b(a);
     a = Math.abs(b) <= (w(0 < fi.b(a)) ? .02 : .08) ? N.d(a, wi, 0) : 0 < wi.b(a) ? N.d(a, wi, wi.b(a) - (w(0 < fi.b(a)) ? .02 : .08)) : 0 > wi.b(a) ? N.d(a, wi, wi.b(a) + (w(0 < fi.b(a)) ? .02 : .08)) : null;
   }
   return a;
 }
-function Ho(a) {
+function Jo(a) {
   return 3 + 1 * Math.abs(a);
 }
-function Io(a, b) {
+function Ko(a, b) {
   var c = Vd(a) ? Ie(lf, a) : a, c = Cd(c, gj);
   if (0 > c) {
-    var d = 0 < wi.b(b) ? Go(b) : b, c = function() {
+    var d = 0 < wi.b(b) ? Io(b) : b, c = function() {
       var a = wi.b(d) - (w(0 < fi.b(d)) ? .02 : .03);
       return-5 > a ? -5 : a;
     }();
     return N.k(d, wi, c, sd([xi, "left"], 0));
   }
-  return 0 < c ? (d = 0 > wi.b(b) ? Go(b) : b, c = function() {
+  return 0 < c ? (d = 0 > wi.b(b) ? Io(b) : b, c = function() {
     var a = wi.b(d) + (w(0 < fi.b(d)) ? .02 : .03);
     return 5 < a ? 5 : a;
-  }(), N.k(d, wi, c, sd([xi, "right"], 0))) : Go(b);
+  }(), N.k(d, wi, c, sd([xi, "right"], 0))) : Io(b);
 }
-var Jo = function(a, b) {
+var Lo = function(a, b) {
   return Ul(new ab(null, 3, [Si, Si.b(b), Bi, new T(null, 2, 5, U, [a, b], null), mj, bf(S.b(function(a) {
     M(a, 0);
     M(a, 1);
@@ -11645,14 +11647,14 @@ var Jo = function(a, b) {
     };
   }(a));
   return a;
-}(), Do), Ko = qm(rm(function(a, b) {
+}(), Do), Mo = qm(rm(function(a, b) {
   var c;
   c = Vd(b) ? Ie(lf, b) : b;
-  c = 0 < Cd(c, fi) && jb(0 < fi.b(a)) ? N.d(a, Gi, Ho(wi.b(a))) : a;
-  c = Io(b, c);
+  c = 0 < Cd(c, fi) && jb(0 < fi.b(a)) ? N.d(a, Gi, Jo(wi.b(a))) : a;
+  c = Ko(b, c);
   c = fi.b(c) <= -Gi.b(c) ? N.k(c, fi, 0, sd([Gi, 0], 0)) : N.k(c, fi, fi.b(c) + Gi.b(c), sd([Gi, Gi.b(c) - .2], 0));
   return N.k(c, gj, gj.b(c) + wi.b(c), sd([fi, fi.b(c) + Gi.b(c)], 0));
-}, Fo, Jo));
+}, Go, Lo));
 (function(a, b) {
   var c = sm(a), d = Sn(b);
   return Tn(function(a, b) {
@@ -11668,11 +11670,11 @@ var Jo = function(a, b) {
   var c = xi.b(a);
   b = [A("images/mario/"), A(b), A("/"), A(c), A(".gif")].join("");
   c = gj.b(a);
-  a = 508 - fi.b(a);
+  a = Ho - fi.b(a);
   a = [A("left: "), A(c), A("px; top: "), A(a), A("px;")].join("");
   a = Jn.R ? Jn.R(Ti, "mario", Ki, b, Oi, a) : Jn.call(null, Ti, "mario", Ki, b, Oi, a);
-  b = In.a ? In.a(Ti, "ground") : In.call(null, Ti, "ground");
-  return In.s ? In.s(Ti, "world", a, b) : In.call(null, Ti, "world", a, b);
-}, sd([Ko], 0)), document.body);
+  b = Wm.a ? Wm.a(Ti, "ground") : Wm.call(null, Ti, "ground");
+  return Wm.s ? Wm.s(Ti, "world", a, b) : Wm.call(null, Ti, "world", a, b);
+}, sd([Mo], 0)), document.body);
 
 })();

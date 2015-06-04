@@ -6,8 +6,12 @@
 
 (enable-console-print!)
 
+(def firefox?
+  (not= (js/navigator.userAgent.indexOf "Firefox") -1))
+
 (def game-state {:x 100 :y 550 :dx 0 :dy 0 :dir "right"})
 
+(def offset (if firefox? 510 508))
 (def gravity 0.2) ; px / frame^2
 (def jump-coefficient 1.0)
 (def min-jump-height 3) ; px / frame
@@ -76,7 +80,7 @@
         dir (:dir s)
         src (mario-sprite-url activity dir)
         left (:x s)
-        top (- 508 (:y s))
+        top (- offset (:y s))
         style (str "left: " left "px; top: " top "px;")]
     (div :id "world"
          (img :id "mario" :src src :style style)
