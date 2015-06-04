@@ -43,7 +43,7 @@ In the example below there is a single signal `actions` that all events are put 
 
 ```clojure
 (ns dominator.counter
-  (:require [dominator.core :refer [patch-dom render]]
+  (:require [dominator.core :refer [render]]
             [stch.html :refer [div table tr td input]]
             [cljs.core.async :as async :refer [<!]]
             [dominator.async :as as :refer-macros [forever]]
@@ -103,7 +103,7 @@ Below is a slightly more complicated example where we have two signals, one for 
 
 ```clojure
 (ns dominator.wiki
-  (:require [dominator.core :refer [patch-dom render]]
+  (:require [dominator.core :refer [render]]
             [stch.html :refer [div input ul li]]
             [cljs.core.async :as async :refer [<! >!]]
             [dominator.async :as as :refer-macros [forever]]
