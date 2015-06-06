@@ -13,6 +13,7 @@
 
 (def offset (if firefox? 510 508))
 (def gravity 0.2) ; px / frame^2
+(def terminal-velocity 5.0)
 (def jump-coefficient 1.0)
 (def min-jump-height 3) ; px / frame
 (def max-move-speed 5.0) ; px / frame
@@ -44,7 +45,9 @@
 (defn apply-gravity [s]
   (if (<= (:y s) (- (:dy s)))
     (assoc s :y 0 :dy 0)
-    (assoc s :y (+ (:y s) (:dy s)) :dy (- (:dy s) gravity))))
+    (assoc s :y (+ (:y s) (:dy s)) :dy (if (<= (:dy s) (- terminal-velocity))
+                                         (- terminal-velocity)
+                                         (- (:dy s) gravity)))))
 
 (defn apply-friction [s]
   (cond (= (:dx s) 0) s
