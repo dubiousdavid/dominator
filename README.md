@@ -39,7 +39,7 @@ http://dubiousdavid.github.io/dominator/doc/
 
 ### Overview
 
-In the example below there is a single signal `actions` that all events are put onto. The `sig/reductions` function acts like an unending `reduce` over the `actions` signal. `reductions` takes a pure function, an initial value, and a signal, and produces a signal. `update-model` takes the existing model, the "action" (value from the signal), and returns a new model. The `view` function is mapped over each value from the `model` signal. This function returns a representation of the markup.  Finally the markup signal and patch function are passed to render, which calls the render function on each value from the signal (uses `requestAnimationFrame` under the hood).
+In the example below there is a single signal `actions` that all events are put onto. The `sig/reductions` function acts like an unending `reduce` over the `actions` signal. `reductions` takes a pure function, an initial value, and a signal, and produces a signal. `update-model` takes the existing model, the "action" (value from the signal), and returns a new model. The `view` function is mapped over each value from the `model` signal. This function returns a representation of the markup.  Finally the markup signal and root element are passed to `render`, which patches the DOM with each value from the signal (uses [requestAnimationFrame](ie.microsoft.com/testdrive/Graphics/RequestAnimationFrame) under the hood).
 
 ```clojure
 (ns dominator.counter
