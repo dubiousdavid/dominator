@@ -9,7 +9,7 @@ Uses [stch-html](https://github.com/stch-library/html) for representing HTML in 
 * Single flow of events.
 * Use [core.async](https://github.com/clojure/core.async).
 * Use pure functions for updating state and rendering.
-* Minimal learning curve.
+* Minimal learning curve (i.e., easier than [Om](https://github.com/swannodette/om)).
 
 ## Installation
 
