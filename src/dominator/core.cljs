@@ -70,12 +70,19 @@
                (animate tick)))
     signal))
 
+(let [old-state (atom ::empty)]
+  (defn lazy [f x]
+    "Call f with x when x is different than it's previous state."
+    (when (not= x @old-state)
+      (f x)
+      (reset! old-state x))))
+
 (defn render
   "Takes a signal of markup and a Javascript element, and patches the
-  DOM with each animation frame."
+  DOM with each animation frame (as needed)."
   [sig elem]
   (let [a (sig/pipe-to-atom sig)
         patch-fn (patch-dom elem)]
     (animate (fn tick []
-                (patch-fn @a)
+                (lazy patch-fn @a)
                 (animate tick)))))
